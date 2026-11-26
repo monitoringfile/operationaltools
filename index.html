@@ -97,6 +97,104 @@
       word-break: break-all;
     }
 
+    /* Compact Color-Changing Announcements Section */
+    .announcements {
+      margin-top: 22px;
+      border-radius: 12px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: linear-gradient(120deg, #1e1b4b, #0f766e, #78350f, #1e3a8a);
+      background-size: 300% 300%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+      animation: shiftColors 12s ease infinite;
+    }
+
+    .announcements:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes shiftColors {
+      0% {
+        background-position: 0% 50%;
+        border-color: rgba(56, 189, 248, 0.45);
+      }
+      33% {
+        background-position: 50% 100%;
+        border-color: rgba(52, 211, 153, 0.45);
+      }
+      66% {
+        background-position: 100% 50%;
+        border-color: rgba(251, 191, 36, 0.45);
+      }
+      100% {
+        background-position: 0% 50%;
+        border-color: rgba(56, 189, 248, 0.45);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .announcements {
+        animation: none;
+        background: #1e293b;
+      }
+    }
+
+    .announcements-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .announcements-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    .announcement-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .announcement-item {
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .announcement-meta {
+      font-size: 0.68rem;
+      color: #cbd5e1;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .announcement-text {
+      font-size: 0.82rem;
+      color: #f8fafc;
+      line-height: 1.35;
+    }
+
     /* PIN Modal */
     .modal-backdrop {
       position: fixed;
@@ -189,7 +287,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Operational Tool Links</h1>
+    <h1>Operational Tools</h1>
 
     <div class="card-grid">
       <!-- 1. Withdrawal & Repayment Internal Control -->
@@ -211,7 +309,7 @@
           <path d="M222 96 L229 103 L243 89" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         <div class="card-body">
-          <span class="card-title">Delinquency Management Tool</span>
+          <span class="card-title">Delinquency Management</span>
           <span class="card-url">withdrawalrepaymentinternalcontrol.vercel.app</span>
         </div>
       </a>
@@ -288,6 +386,22 @@
         </div>
       </a>
     </div>
+
+    <!-- Compact Announcements Below the Web Grid -->
+    <section class="announcements" aria-labelledby="announcementsHeading">
+      <div class="announcements-header">
+        <h2 id="announcementsHeading" class="announcements-title">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Announcements
+        </h2>
+      </div>
+      <ul class="announcement-list">
+        <li class="announcement-item">
+          <span class="announcement-meta">Update &bull; Nov 26, 2026</span>
+          <p class="announcement-text">Next Tool: Ongoing Prospect Clients Generator for Reloan</p>
+        </li>
+      </ul>
+    </section>
   </div>
 
   <!-- PIN Modal for KPI Trend -->
